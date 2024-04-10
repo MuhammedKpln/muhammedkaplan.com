@@ -1,16 +1,11 @@
+import ProfileImage from "@assets/profile.jpg";
 import { useCallback } from "react";
 import { HiOutlineMenuAlt2 } from "react-icons/hi";
-import ProfileImage from "../assets/profile.jpg";
 
 export default function Header() {
   const toggleMenu = useCallback(() => {
-    console.log("selam");
-
-    document
-      .querySelector("#mobileMenu")
-      .classList.remove("invisible")
-      .querySelector("#mobileMenu")
-      .classList.remove("opacity-0");
+    document.querySelector("#mobileMenu").classList.toggle("opacity-0");
+    document.querySelector("#mobileMenu").classList.toggle("invisible");
   }, []);
 
   return (
@@ -31,7 +26,7 @@ export default function Header() {
 
         <div className="md:hidden">
           <button className="p-2" onClick={toggleMenu}>
-            <HiOutlineMenuAlt2 className="w-[26px] h-[26px]" />
+            <HiOutlineMenuAlt2 className="w-6 h-6" />
           </button>
         </div>
 
@@ -49,31 +44,6 @@ export default function Header() {
             Anlar
           </a>
         </nav>
-
-        <div
-          id="mobileMenu"
-          className="absolute top-0 left-0 bg-black text-white  w-full h-full invisible opacity-0"
-        >
-          <header className="pt-4 lg:pt-6 pb-6 lg:pb-8 flex items-center justify-between container mx-auto">
-            <button className="p-2">
-              <HiOutlineMenuAlt2 className="w-[26px] h-[26px]" />
-            </button>
-          </header>
-          <nav className="grid items-center">
-            <a className="text-2xl py-1.5 rounded-md px-4" href="/blog">
-              Blog
-            </a>
-            <a className="text-2xl py-1.5 rounded-md px-4" href="/ekipmanlar">
-              Ekipmanlar
-            </a>
-            <a className="text-2xl py-1.5 rounded-md px-4" href="/bookmarks">
-              Yer İmleri
-            </a>
-            <a className="text-2xl py-1.5 rounded-md px-4" href="/anlar">
-              Anlar
-            </a>
-          </nav>
-        </div>
       </header>
     </>
   );

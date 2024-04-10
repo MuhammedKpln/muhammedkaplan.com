@@ -1,5 +1,6 @@
 ---
-import Header from "../components/Header";
+import MobileHeader from "src/components/Header/MobileHeader";
+import Header from "../components/Header/Header";
 ---
 
 <html lang="en">
@@ -10,9 +11,11 @@ import Header from "../components/Header";
     <title>Astro</title>
   </head>
   <body>
-    <Header />
+    <Header client:load />
+    <MobileHeader client:load />
     <div class="container mx-auto">
       <slot name="body" />
     </div>
   </body>
 </html>
+../components/Header/Header
