@@ -1,21 +1,25 @@
 ---
+import "@assets/css/main.css";
 import MobileHeader from "src/components/Header/MobileHeader";
 import Header from "../components/Header/Header";
 ---
 
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Astro</title>
   </head>
   <body>
-    <Header client:load />
-    <MobileHeader client:load />
-    <div class="container mx-auto">
-      <slot name="body" />
+    <div class="flex flex-col min-h-full bg-black text-white">
+      <Header client:load />
+      <MobileHeader client:load />
+      <div class="container mx-auto">
+        <slot name="body" />
+      </div>
+
+      <slot name="body-no-container" />
     </div>
   </body>
 </html>
-../components/Header/Header
