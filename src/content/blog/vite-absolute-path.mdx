@@ -1,0 +1,55 @@
+---
+title: Vite Absolute Path
+pubDate: 2024-04-17
+---
+
+Recently, I have been developing my React projects with Vite instead of CRA. It is both faster and we can use the staging event in the build process without any additional settings, which is an advantage. The absolute path in CRA and the setups in Vite are a bit different.
+
+With Absolute Path, we can define a precise path definition and call our files using this precise path definition wherever we are. So import operations like this:
+
+```javascript
+import Header from "../../components/Header";
+import HeroSection from "../../components/HeroSection";
+import { numberFormat } from "../../../helpers/Mixins";
+```
+
+Ultimately to be able to use it like this:
+
+```javascript
+import Header from "~/components/Header";
+import HeroSection from "~/components/HeroSection";
+import { numberFormat } from "~/helpers/Mixins";
+```
+
+Follow these steps:
+
+If you are using typescript, create `tsconfig.json` If you are using javascript, create the `jsconfig.json` file in the main directory and write the following in it:
+
+```javascript
+{
+	"compilerOptions": {
+	    "baseUrl": "./src",
+	    "paths": {
+	      "~/*": ["./*"]
+	    }
+	}
+}
+```
+
+and open your `vite.config.ts` file and add this:
+
+```javascript
+resolve: {
+    alias: {
+      '~': path.resolve(__dirname, 'src'),
+    },
+  },
+```
+
+If it can't find a path, import it like this at the top:
+
+```javascript
+import * as path from "path";
+```
+
+Restart Vite, and you are ready :)
