@@ -2,7 +2,9 @@
 import { getCollection } from "astro:content";
 import { CiCalendarDate } from "react-icons/ci";
 
-const posts = await getCollection("blog");
+let posts = await getCollection("blog");
+
+posts = posts.sort((a,b) => a.data.pubDate > b.data.pubDate ? 1 : 0)
 ---
 
 <section class="mb-10">
