@@ -6,10 +6,18 @@ const posts = await getCollection("blog");
 ---
 
 <section class="mb-10">
-  <h2 class="text-lg lg:text-3xl font-bold mb-6">Son Yazdıklarım</h2>
+  <h2 class="text-lg lg:text-3xl font-bold mb-6">Senaste inlägg</h2>
   <div class="grid lg:grid-cols-2 gap-3 lg:gap-5">
     {
-      posts.map((post) => (
+      posts.map((post) => {
+        const formattedDate = new Intl.DateTimeFormat("sv-SE", {
+          day:  "2-digit",
+          month: "long",
+          year: "numeric",
+        }).format(post.data.pubDate);
+
+
+        return (
         <a
           class="border border-white/20 flex items-center gap-x-4 transition-colors hover:border-white/40 p-6 rounded-md group"
           href={`${post.collection}/${post.slug}`}
@@ -20,11 +28,12 @@ const posts = await getCollection("blog");
             </h2>
             <time class="text-xs lg:text-sm text-gray-500 flex items-center gap-x-2 mt-auto">
               <CiCalendarDate className="w-6 h-6" />
-              11 Temmuz 2023
+              {formattedDate}
             </time>
           </div>
         </a>
-      ))
+      ) 
+      })
     }
   </div>
 </section>
