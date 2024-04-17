@@ -2,6 +2,7 @@ import type { CollectionEntry } from "astro:content";
 import { useCallback, useEffect, useState } from "react";
 import { FaStar } from "react-icons/fa6";
 import type { IGithubApi } from "src/models/ghapi";
+import Spinner from "../Spinner";
 
 interface Props {
   project: CollectionEntry<"projects">;
@@ -23,7 +24,6 @@ export default function CardFooter({ project, profileImage }: Props) {
     );
 
     const json: IGithubApi = await response.json();
-
     setStars(json.stargazers_count);
   }, []);
 
@@ -32,6 +32,8 @@ export default function CardFooter({ project, profileImage }: Props) {
       fetchStars();
     }
   }, []);
+
+  console.log(stars);
 
   return (
     <div id="footer" className="pt-5 text-gray-300">
@@ -42,10 +44,12 @@ export default function CardFooter({ project, profileImage }: Props) {
         </div>
 
         <div id="right-">
-          {stars && (
-            <span className="flex items-center gap-3 ">
+          {stars ? (
+            <span className="flex items-center gap-3">
               <FaStar /> {stars}
             </span>
+          ) : (
+            <Spinner />
           )}
         </div>
       </div>

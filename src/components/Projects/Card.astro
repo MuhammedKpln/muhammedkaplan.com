@@ -44,18 +44,34 @@ const imagePath = `/src/assets/images/${project.data?.image}`;
         </div>
       )
     }
+
+    {
+      project.data.tags &&
+        project.data.tags?.map((tag) => (
+          <div
+            class={`p-1.5 px-5 text-xs rounded-full text-center  text-${getRandomColor()} bg-${getRandomColor()} `}
+          >
+            {tag}
+          </div>
+        ))
+    }
   </div>
 
   {
     project.data?.image && (
-      <Image src={images[imagePath]()} alt="selam" class="h-60 rounded-lg" />
+      <Image
+        src={images[imagePath]()}
+        alt="selam"
+        class="h-60 rounded-lg"
+        class="pb-5"
+      />
     )
   }
 
-  <div id="description" class="py-5 border-b border-blue-300/30">
+  <div id="description" class="pb-5 border-b border-blue-300/30">
     <h1 class="text-xl font-semibold">
       <a
-        href={project.data.github ?? "#"}
+        href={project.data.github ?? project.data.external ?? "#"}
         target="_blank"
         rel="noopener noreferrer"
       >

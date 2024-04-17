@@ -22,48 +22,49 @@ const groupedPosts: IGroupedPost = posts.reduce((posts, post) => {
   return posts;
 }, {});
 
-console.log(groupedPosts);
 const groupedPostsKeys = Object.keys(groupedPosts);
 ---
 
 <Base>
   <Fragment slot="body">
-    {
-      groupedPostsKeys.map((key) => {
-        const date = new Date();
-        const splittedKey = key.split("-");
-        date.setFullYear(parseInt(splittedKey[1]));
-        date.setMonth(parseInt(splittedKey[0]));
-        const formattedDate = new Intl.DateTimeFormat("sv-SE", {
-          month: "long",
-          year: "numeric",
-        }).format(date);
+    <div>
+      {
+        groupedPostsKeys.map((key) => {
+          const date = new Date();
+          const splittedKey = key.split("-");
+          date.setFullYear(parseInt(splittedKey[1]));
+          date.setMonth(parseInt(splittedKey[0]));
+          const formattedDate = new Intl.DateTimeFormat("sv-SE", {
+            month: "long",
+            year: "numeric",
+          }).format(date);
 
-        return (
-          <section>
-            <>
-              <h6 class="text-[15px] lg:text-lg text-gray-500 mb-3">
-                {formattedDate}
-              </h6>
-              <div class="grid gap-y-2 -mx-4">
-                {groupedPosts[key].map((post) => {
-                  return (
-                    <a
-                      class="text-sm lg:text-lg flex items-center gap-x-8 py-1.5 px-4 transition-colors group hover:text-blue-300 hover:bg-blue-300/10 rounded-md"
-                      href={`${post.collection}/${post.slug}`}
-                    >
-                      {post.data.title}
-                      {/*<div class="flex gap-x-2 opacity-0 transition-all group-hover:opacity-100">
-                      <span class="opacity-50 text-blue-300">#youtube</span>
-                    </div>*/}
-                    </a>
-                  );
-                })}
-              </div>
-            </>
-          </section>
-        );
-      })
-    }
+          return (
+            <section>
+              <>
+                <h6 class="text-[15px] lg:text-lg text-gray-500 mb-3">
+                  {formattedDate}
+                </h6>
+                <div class="grid gap-y-2 -mx-4">
+                  {groupedPosts[key].map((post) => {
+                    return (
+                      <a
+                        class="text-sm lg:text-lg flex items-center gap-x-8 py-1.5 px-4 transition-colors group hover:text-blue-300 hover:bg-blue-300/10 rounded-md"
+                        href={`${post.collection}/${post.slug}`}
+                      >
+                        {post.data.title}
+                        {/*<div class="flex gap-x-2 opacity-0 transition-all group-hover:opacity-100">
+                        <span class="opacity-50 text-blue-300">#youtube</span>
+                      </div>*/}
+                      </a>
+                    );
+                  })}
+                </div>
+              </>
+            </section>
+          );
+        })
+      }
+    </div>
   </Fragment>
 </Base>
