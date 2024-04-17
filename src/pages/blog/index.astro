@@ -2,7 +2,6 @@
 import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
 import Base from "src/layouts/Base.layout.astro";
-
 interface IGroupedPost {
   [key: string]: CollectionEntry<"blog">[];
 }

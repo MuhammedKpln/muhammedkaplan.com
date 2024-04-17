@@ -2,20 +2,30 @@
 import "@assets/css/main.css";
 import ProfileImage from "@assets/profile.jpg";
 import { Image } from "astro:assets";
+import { ViewTransitions, fade } from 'astro:transitions';
 import Footer from "src/components/Footer.astro";
 import MobileHeader from "src/components/Header/MobileHeader";
 import Header from "../components/Header/Header";
 ---
 
-<html>
+<script is:inline>
+  window.localStorage.setItem("theme", "dark");
+</script>
+
+<html class="dark">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Astro</title>
-  </head>
+    <title>Muhammed Kaplan - Webbdagbok</title>
+    <meta name="theme-color" content="#000000">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <ViewTransitions  />
+    </head>
   <body>
-    <div class="flex flex-col min-h-full bg-black text-white">
+    <div class="flex flex-col min-h-full bg-black text-white" transition:animate={fade()} >
       {/* @ts-ignore */}
       <Header client:idle>
         <Image
