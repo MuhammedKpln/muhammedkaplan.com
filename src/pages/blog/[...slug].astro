@@ -5,6 +5,7 @@ import Blog from "src/layouts/Blog.layout.astro";
 
 const { slug } = Astro.params;
 
+// @ts-ignore
 const collection = await getEntry("blog", slug);
 
 if (!collection) {

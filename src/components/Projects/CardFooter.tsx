@@ -14,7 +14,7 @@ export default function CardFooter({ project, profileImage }: Props) {
 
   const fetchStars = useCallback(async () => {
     setLoading(true);
-    const repo = project.data.github.split("/");
+    const repo = project.data.github!.split("/");
     const userName = repo[3];
     const repoName = repo[4];
 

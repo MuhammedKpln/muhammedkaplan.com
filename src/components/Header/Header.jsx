@@ -17,7 +17,7 @@ export default function Header({profileImage}) {
 
           <div>
             <h1 className="text-lg lg:text-2xl font-bold">Muhammed Kaplan</h1>
-            <h6 className="text-sm lg:text-base text-gray-500">Developer</h6>
+            <h6 className="text-sm lg:text-base text-gray-500">Software Developer</h6>
           </div>
         </a>
 

@@ -10,7 +10,6 @@ interface IGroupedPost {
 let posts = await getCollection<"blog">("blog");
 
 const groupedPosts: IGroupedPost = posts.reduce((posts, post) => {
-  const dateAsString = post.data.pubDate.toString();
   const month = post.data.pubDate.getMonth();
   const year = post.data.pubDate.getFullYear();
   const key = `${month}-${year}`;
