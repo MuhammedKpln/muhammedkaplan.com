@@ -22,6 +22,8 @@ const projects = defineCollection({
     github: z.string().optional(),
     progress: z.nativeEnum(ProjectStatus).default(ProjectStatus.OnProgress),
     image: z.string().optional(),
+    tags: z.array(z.string()).optional(),
+    external: z.string().optional(),
   }),
 });
 
