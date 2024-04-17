@@ -7,7 +7,11 @@ const { slug } = Astro.params;
 
 const collection = await getEntry("blog", slug);
 
-const { Content, headings } = await collection.render();
+if (!collection) {
+  return Astro.redirect("/blog");
+}
+
+const { Content } = await collection?.render();
 ---
 
 <Blog>

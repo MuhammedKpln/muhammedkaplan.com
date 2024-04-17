@@ -1,5 +1,7 @@
 ---
 import "@assets/css/main.css";
+import ProfileImage from "@assets/profile.jpg";
+import { Image } from "astro:assets";
 import MobileHeader from "src/components/Header/MobileHeader";
 import Header from "../components/Header/Header";
 ---
@@ -13,8 +15,15 @@ import Header from "../components/Header/Header";
   </head>
   <body>
     <div class="flex flex-col min-h-full bg-black text-white">
-      <Header client:load />
-      <MobileHeader client:load />
+      <Header client:idle>
+        <Image
+          slot="profile-image"
+          class="w-16 h-16 lg:h-24 lg:w-24 bg-white/10 rounded-full border border-white/20"
+          src={ProfileImage}
+          alt="qwe"
+        />
+      </Header>
+      <MobileHeader client:idle />
       <div class="container mx-auto">
         <slot name="body" />
       </div>

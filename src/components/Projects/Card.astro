@@ -1,0 +1,80 @@
+---
+import Profile from "@assets/profile.jpg";
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import CardFooter from "./CardFooter";
+
+interface Props {
+  project: CollectionEntry<"projects">;
+}
+
+const { project } = Astro.props;
+
+const { Content } = await project.render();
+
+const getRandomColor = () => {
+  const colors = [
+    "red-500",
+    "yellow-500",
+    "green-500",
+    "blue-500",
+    "indigo-500",
+    "purple-500",
+    "pink-500",
+  ];
+  return colors[Math.floor(Math.random() * colors.length)];
+};
+
+const randomColor = getRandomColor();
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/images/*.{jpeg,jpg,png,gif}"
+);
+---
+
+<div class="bg-blue-300/5 p-5 border-blue-300/30 shadow-2xl rounded-lg">
+  <div id="badges" class="flex gap-5 mb-5">
+    {
+      project.data.featured && (
+        <div
+          class={`p-1.5 px-5 text-xs rounded-full text-center  text-${randomColor} bg-${randomColor} `}
+        >
+          Utvald
+        </div>
+      )
+    }
+  </div>
+
+  {
+    project.data?.image && (
+      <Image
+        src={images[project.data.image]()}
+        alt="selam"
+        class="h-60 rounded-lg"
+      />
+    )
+  }
+
+  <div id="description" class="py-5 border-b border-blue-300/30">
+    <h1 class="text-xl font-semibold">
+      <a
+        href={project.data.github ?? "#"}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {project.data.name}</a
+      >
+    </h1>
+    <p class="text-gray-300">
+      <Content />
+    </p>
+  </div>
+
+  <CardFooter project={project} client:visible>
+    <Image
+      slot="profile-image"
+      src={Profile}
+      alt="Muhammed Kaplan"
+      class="w-6 h-6 rounded-full"
+    />
+  </CardFooter>
+</div>

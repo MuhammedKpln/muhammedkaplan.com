@@ -1,3 +1,4 @@
+import { NavBarItems } from ".";
 import Header from "./Header";
 
 export default function MobileHeader() {
@@ -8,19 +9,16 @@ export default function MobileHeader() {
     >
       <Header />
 
-      <nav className="grid items-center  border-t border-white/10">
-        <a className="text-2xl py-1.5 rounded-md px-4" href="/blog">
-          Blog
-        </a>
-        <a className="text-2xl py-1.5 rounded-md px-4" href="/ekipmanlar">
-          Ekipmanlar
-        </a>
-        <a className="text-2xl py-1.5 rounded-md px-4" href="/bookmarks">
-          Yer İmleri
-        </a>
-        <a className="text-2xl py-1.5 rounded-md px-4" href="/anlar">
-          Anlar
-        </a>
+      <nav className="grid items-center border-t border-white/10">
+        {NavBarItems.map((item) => (
+          <a
+            className="text-2xl py-1.5 rounded-md px-4 "
+            href={item.href}
+            key={item.href}
+          >
+            {item.name}
+          </a>
+        ))}
       </nav>
     </div>
   );
