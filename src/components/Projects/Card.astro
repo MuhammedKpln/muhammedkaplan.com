@@ -29,6 +29,8 @@ const randomColor = getRandomColor();
 const images = import.meta.glob<{ default: ImageMetadata }>(
   "/src/assets/images/*.{jpeg,jpg,png,gif}"
 );
+
+const imagePath = `/src/assets/images/${project.data?.image}`;
 ---
 
 <div class="bg-blue-300/5 p-5 border-blue-300/30 shadow-2xl rounded-lg">
@@ -46,11 +48,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
 
   {
     project.data?.image && (
-      <Image
-        src={images[project.data.image]()}
-        alt="selam"
-        class="h-60 rounded-lg"
-      />
+      <Image src={images[imagePath]()} alt="selam" class="h-60 rounded-lg" />
     )
   }
 
