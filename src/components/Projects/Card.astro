@@ -25,7 +25,6 @@ const getRandomColor = () => {
   return colors[Math.floor(Math.random() * colors.length)];
 };
 
-const randomColor = getRandomColor();
 const images = import.meta.glob<{ default: ImageMetadata }>(
   "/src/assets/images/*.{jpeg,jpg,png,gif}"
 );
@@ -36,20 +35,10 @@ const imagePath = `/src/assets/images/${project.data?.image}`;
 <div class="bg-blue-300/5 p-5 border-blue-300/30 shadow-2xl rounded-lg">
   <div id="badges" class="flex gap-5 mb-5">
     {
-      project.data.featured && (
-        <div
-          class={`p-1.5 px-5 text-xs rounded-full text-center  text-${randomColor} bg-${randomColor} `}
-        >
-          Utvald
-        </div>
-      )
-    }
-
-    {
       project.data.tags &&
         project.data.tags?.map((tag) => (
           <div
-            class={`p-1.5 px-5 text-xs rounded-full text-center  text-${getRandomColor()} bg-${getRandomColor()} `}
+          class:list={["p-1.5", "px-5", "rounded-full", "text-center", "text-xs", `bg-${getRandomColor()}`]}
           >
             {tag}
           </div>
