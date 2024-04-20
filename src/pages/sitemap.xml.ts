@@ -5,7 +5,7 @@ export async function GET() {
   const posts = await getCollection("blog");
   const postsMapped = posts.map((post) => {
     const lastMod = (post.data.pubDate ?? post.data.pubDate).toISOString();
-    return `<url><loc>${siteUrl}${post.slug}/</loc><lastmod>${lastMod}</lastmod></url>`;
+    return `<url><loc>${siteUrl}/${post.slug}/</loc><lastmod>${lastMod}</lastmod></url>`;
   });
 
   const result = `
