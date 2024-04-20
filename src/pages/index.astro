@@ -1,5 +1,5 @@
 ---
-import { IoLogoGithub, IoLogoTwitter } from "react-icons/io";
+import { IoLogoGithub, IoLogoInstagram, IoLogoTwitter } from "react-icons/io";
 import Posts from "../components/Index/Posts.astro";
 import BaseLayout from "../layouts/Base.layout.astro";
 ---
@@ -8,7 +8,7 @@ import BaseLayout from "../layouts/Base.layout.astro";
   <Fragment slot="body">
     <div class="p-6 lg:p-10 border rounded-md bg-blue-300/5 border-blue-300/30">
       <h2 class="text-xl lg:text-4xl font-bold lg:leading-[46px]">
-        Webbdagbok, <br /> Välkommen!
+        Mitt Webbdagbok, <br /> Välkommen!
       </h2>
       <p class="text-[15px] lg:text-lg text-gray-400 py-4">
         På denna webbplats, inte bara från kodning, men också från mitt dagliga
@@ -29,6 +29,13 @@ import BaseLayout from "../layouts/Base.layout.astro";
             class="hover:text-white transition-colors"
           >
             <IoLogoGithub className="w-6 h-6" />
+          </a>
+          <a
+            target="_blank"
+            href="https://github.com/muhammedkplnn_"
+            class="hover:text-white transition-colors"
+          >
+            <IoLogoInstagram className="w-6 h-6" />
           </a>
         </nav>
       </p>
