@@ -5,6 +5,8 @@ import { CiCalendarDate } from "react-icons/ci";
 let posts = await getCollection("blog");
 
 posts = posts.sort((a,b) => a.data.pubDate > b.data.pubDate ? 1 : 0)
+posts = posts.slice(0,4)
+
 ---
 
 <section class="mb-10">
@@ -34,7 +36,7 @@ posts = posts.sort((a,b) => a.data.pubDate > b.data.pubDate ? 1 : 0)
             </time>
           </div>
         </a>
-      ) 
+      )
       })
     }
   </div>
