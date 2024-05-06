@@ -12,12 +12,22 @@ if (!collection) {
   return Astro.redirect("/blog");
 }
 
+const formattedDate = new Intl.DateTimeFormat("sv-SE", {
+            month: "long",
+            year: "numeric",
+            day: "2-digit"
+}).format(collection.data.pubDate);
+
+
 const { Content } = await collection?.render();
 ---
 
 <Blog>
   <Fragment slot="title">
     {collection.data.title}
+  </Fragment>
+  <Fragment slot="date">
+    {formattedDate}
   </Fragment>
   <Fragment slot="content">
     <Prose>

@@ -21,7 +21,8 @@ import Base from "./Base.layout.astro";
           <time
             class="flex items-center gap-x-2 text-sm lg:text-base text-gray-400"
           >
-            <CiCalendarDate className="w-4 h-4" /> 11 Temmuz 2023</time
+            <CiCalendarDate className="w-4 h-4" /> <slot name="date" />
+            </time
           >
         </div>
       </header><div
