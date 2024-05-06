@@ -14,6 +14,7 @@ export async function GET() {
                 <url><loc>${siteUrl}/</loc></url>
                 <url><loc>${siteUrl}/blog/</loc></url>
                 <url><loc>${siteUrl}/projects/</loc></url>
+                <url><loc>${siteUrl}/resume/</loc></url>
                 ${postsMapped.join("\n")}
             </urlset>
     `;
