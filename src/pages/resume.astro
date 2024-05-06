@@ -1,0 +1,25 @@
+---
+import { getEntry } from "astro:content";
+import Prose from "src/components/Prose.astro";
+import Blog from "src/layouts/Blog.layout.astro";
+
+
+const collection = await getEntry("blog", "resume");
+
+if (!collection) {
+  return Astro.redirect("/blog");
+}
+
+const { Content } = await collection?.render();
+---
+
+<Blog>
+  <Fragment slot="title">
+    {collection.data.title}
+  </Fragment>
+  <Fragment slot="content">
+    <Prose>
+      <Content />
+    </Prose>
+  </Fragment>
+</Blog>
