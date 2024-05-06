@@ -1,3 +1,7 @@
+---
+import MailingListInput from "./Footer/MailingListInput";
+---
+
 <div class="bg-yellow-300/5 mt-auto pt-8 border-t border-yellow-300/30">
   <footer class="container mx-auto">
     <h3 class="text-lg lg:text-xl mb-2 font-semibold text-gray-300">
@@ -5,15 +9,10 @@
     </h3><p class="text-sm lg:text-base mb-6 text-gray-500">
       Om du inte vill missa vad jag skriver kan du ange din e-postadress nedan
       för att prenumerera och fortsätta.
-    </p><form class="flex flex-col lg:flex-row items-center gap-2.5">
-      <input
-        class="w-full lg:w-[400px] h-10 rounded-full px-4 bg-white/10 text-sm lg:text-base"
-        type="text"
-        placeholder="Din e-postadress"
-      /><button
-        class="h-10 rounded-full transition-colors whitespace-nowrap text-sm lg:text-base bg-yellow-700 px-8 hover:bg-yellow-600 w-full lg:w-auto"
-        >Prenumerera</button
-      >
+    </p>
+
+    <form class="flex flex-col lg:flex-row items-center gap-2.5">
+      <MailingListInput client:load/>
     </form>
 
   </footer>

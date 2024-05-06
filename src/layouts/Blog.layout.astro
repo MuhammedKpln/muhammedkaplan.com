@@ -1,5 +1,4 @@
 ---
-import { CiCalendarDate } from "react-icons/ci";
 import Base from "./Base.layout.astro";
 ---
 
@@ -21,8 +20,9 @@ import Base from "./Base.layout.astro";
           <time
             class="flex items-center gap-x-2 text-sm lg:text-base text-gray-400"
           >
-            <CiCalendarDate className="w-4 h-4" /> 11 Temmuz 2023</time
-          >
+            <slot name="date" />
+            <!-- <CiCalendarDate className="w-4 h-4" /> 11 Temmuz 2023 -->
+          </time>
         </div>
       </header><div
         class="container mx-auto text-sm lg:text-xl text-gray-300 pt-2 markdown-body"

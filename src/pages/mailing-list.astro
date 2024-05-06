@@ -1,0 +1,22 @@
+---
+import { db, MailingList } from 'astro:db';
+import Base from 'src/layouts/Base.layout.astro';
+
+
+const d = await db.select().from(MailingList).all()
+
+
+
+console.log(d)
+
+---
+
+
+
+<Base>
+    <Fragment slot="body">
+        {d.map((mail) => <Fragment>{mail.email}</Fragment> )}
+
+    </Fragment>
+
+</Base>

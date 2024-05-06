@@ -6,6 +6,7 @@ import { ViewTransitions, fade } from 'astro:transitions';
 import Footer from "src/components/Footer.astro";
 import MobileHeader from "src/components/Header/MobileHeader";
 import Header from "../components/Header/Header";
+import { Toaster } from 'react-hot-toast'
 ---
 
 <script is:inline>
@@ -49,5 +50,7 @@ import Header from "../components/Header/Header";
     <div class=" bg-black text-white">
       <Footer />
     </div>
+
+    <Toaster client:idle />
   </body>
 </html>
