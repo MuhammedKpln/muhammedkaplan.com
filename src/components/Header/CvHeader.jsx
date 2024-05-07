@@ -7,7 +7,7 @@ export default function CvHeader({ profileImage }) {
 
           <div>
             <h1 className="text-lg font-bold text-blue-500">Muhammed Kaplan</h1>
-            <p class="text-gray-500 text-sm max-w-sm mt-2">
+            <p className="text-gray-500 text-sm max-w-sm mt-2">
               Aspiring software developers on a journey of continuous learning
               and growth. Exploring the world of code, creating digital
               solutions and seeking new opportunities.
@@ -15,7 +15,7 @@ export default function CvHeader({ profileImage }) {
           </div>
         </a>
 
-        <div id="details" class="text-gray-500 text-sm w-1/4">
+        <div id="details" className="text-gray-500 text-sm w-1/4">
           <ul>
             <li>
               <a href="mailto:mmuhammedkaplan0@gmail.com">

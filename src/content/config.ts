@@ -26,6 +26,7 @@ const projects = defineCollection({
     tags: z.array(z.string()).optional(),
     external: z.string().optional(),
     sidebar: z.boolean().optional(),
+    cv: z.boolean().optional(),
   }),
 });
 

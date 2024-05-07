@@ -2,10 +2,22 @@
 
 ---
 
-<div
-  class="prose-lg dark:prose-invert
+{
+  Astro.props?.isCV ? (
+    <div
+      class="prose-sm text-gray-500 dark:prose-invert
   prose-h1:font-bold prose-h1:text-xl
   prose-a:text-blue-600 prose-p:text-justify prose-img:rounded-xl prose-code:text-blue-300 prose-ul:list-disc"
->
-  <slot />
-</div>
+    >
+      <slot />
+    </div>
+  ) : (
+    <div
+      class="prose-lg dark:prose-invert
+  prose-h1:font-bold prose-h1:text-xl
+  prose-a:text-blue-600 prose-p:text-justify prose-img:rounded-xl prose-code:text-blue-300 prose-ul:list-disc"
+    >
+      <slot />
+    </div>
+  )
+}

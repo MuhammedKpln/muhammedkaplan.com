@@ -1,20 +1,21 @@
 ---
-name: Flyea
-github: https://github.com/muhammedkpln/fileshare
+name: Mote
+github: https://github.com/muhammedkpln/mote
 featured: true
 progress: 2
-image: flyea.png
-description: Peer to peer file share application built with Flutter
+image: mote.png
+description: Mote is note taking application that is fully open source.
 tags:
-  - Flutter
-  - WebRTC
+  - React / NextJS
+  - Typescript
+  - NestJS
 cv: true
 ---
 
 import CvOnlyDetails from "@components/CvOnlyDetails.astro";
 import ProjectDetails from "@components/ProjectDetails.astro";
 
-<ProjectDetails>Peer to peer file share application built with Flutter</ProjectDetails>
+<ProjectDetails>Mote is note taking application that is fully open source.</ProjectDetails>
 
 <CvOnlyDetails>
   - Developed an application for making file transfer easy between two devices using WebRTC

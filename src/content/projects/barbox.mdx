@@ -4,9 +4,22 @@ github: https://github.com/muhammedkpln/barbox
 featured: true
 progress: 0
 image: barbox.png
-description: An application for  disposable emails, right from your Mac menu bar
+description: An application for disposable emails, that is accesible from your Mac menu bar.
 tags:
   - Flutter
+cv: true
 ---
 
-Your one-click solution for disposable emails, right from your Mac menu bar
+import CvOnlyDetails from "@components/CvOnlyDetails.astro";
+import ProjectDetails from "@components/ProjectDetails.astro";
+
+<ProjectDetails>
+  Your one-click solution for disposable emails, right from your Mac menu bar
+</ProjectDetails>
+
+<CvOnlyDetails>
+  - Developed a program to create temporary email accounts from the Mac menu bar,
+  where you can switch between multiple temporary accounts.
+  - Integrated Mail.tm API to create temporary emails
+  - NoSQL for storing emails locally
+</CvOnlyDetails>

@@ -4,10 +4,35 @@ external: https://satra.vercel.app
 featured: true
 progress: 2
 description: Everything about getting a driving license. A comprehensive driving license website including a summary of driving license theory, forums and driving license questions.
-
 tags:
-  - React Native
+  - React & NextJS
+  - Laravel
+  - PostgreSQL
+  - Redis
   - TypeScript
+cv: true
 ---
 
+
+import CvOnlyDetails from "@components/CvOnlyDetails.astro";
+import ProjectDetails from "@components/ProjectDetails.astro";
+
+<ProjectDetails>
 Everything about getting a driving license. A comprehensive driving license website including a summary of driving license theory, forums and driving license questions.
+</ProjectDetails>
+
+<CvOnlyDetails>
+  - Developed a web application for self-testing for the theoretical driving test, where the user can work with different catalogs and get results based on their answers.
+  - Backend (PHP Laravel)
+    - Using PostgreSQL for storing data
+    - Optimized API performance by optimizing SQL queries and caching using Redis
+    - Used Docker for deploying to production.
+    - Created an admin panel for admins to be able to create new questions.
+  - Frontend (React / NextJS)
+    - Created a responsive UI using React & NextJS
+    - Using TypeScript for code safety
+    - Created an Electron application to be able to access it as a native Windows program.
+    - i18n for internationalization
+    - Using Zustand for creating stores and also store authentication credentials(tokens) and some other question related objects.
+</CvOnlyDetails>
+

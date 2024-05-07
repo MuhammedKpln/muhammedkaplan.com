@@ -1,9 +1,12 @@
 ---
+import Prose from "@components/Prose.astro";
 import { getCollection } from "astro:content";
 import CvLayout from "src/layouts/CvLayout.astro";
 
-const projects = await getCollection("projects");
-const sidebarProjects = projects.filter((p) => p.data.sidebar);
+const _projects = await getCollection("projects");
+let projects = _projects.filter((p) => p.data.cv && !p.data.sidebar);
+projects = projects.sort((a, b) => (a.data.featured ? 1 : 0));
+const sidebarProjects = _projects.filter((p) => p.data.sidebar);
 
 const skills = [
   {
@@ -12,11 +15,11 @@ const skills = [
   },
   {
     title: "Libraries & Frameworks",
-    desc: " React, Next.js, Nest.js, Gatsby, React Native, Flutter, Django, Tailwind",
+    desc: " React, Next.js, Nest.js, React Native, Flutter, Django, Tailwind, GraphQL, WebRTC, Socket.IO",
   },
   {
     title: "Tools",
-    desc: "Git, GitHub, Netlify, Vercel, WordPress, Docker, Webpack, Figma",
+    desc: "Git, GitHub, Netlify, Vercel, Fly, Docker, Webpack, Figma",
   },
 ];
 ---
@@ -56,7 +59,11 @@ const skills = [
         {
           sidebarProjects.map((project) => (
             <li class="mb-5">
-              <h6>{project.data.name}</h6>
+              <h6>
+                <a href={project.data.github ?? project.data.external}>
+                  {project.data.name}
+                </a>
+              </h6>
 
               <span class="text-gray-500 text-sm">
                 {project.data.description}
@@ -82,7 +89,7 @@ const skills = [
                 <div class="flex items-center mb-2 ">
                   <div id="title" class="font-semibold text-xl ">
                     <a
-                      href="${project.titleHref}"
+                      href={project.data.github ?? project.data.external}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -99,8 +106,10 @@ const skills = [
                   </ul>
                 </div>
 
-                <p id="description" class="text-gray-500 text-sm">
-                  <Content />
+                <p id="description">
+                  <Prose isCV>
+                    <Content />
+                  </Prose>
                 </p>
               </div>
             );

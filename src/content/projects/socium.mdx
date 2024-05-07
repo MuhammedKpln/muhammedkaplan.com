@@ -1,14 +1,26 @@
 ---
 name: Socium
-github: https://github.com/muhammedkpln/sociumflutter
+github: https://github.com/muhammedkpln/socium
 featured: true
 progress: 0
 image: socium.png
 description: Socium is an application for anonymous chat. It offers features such as anonymous chat, sharing Spotify songs and creating a social circle by following profiles. The app supports voice calls and gives users the ability to manage their chats, including ending or blocking unwanted conversations.
 tags:
-  - Flutter
+  - React Native
+  - TypeScript
+  - GraphQL
+  - WebRTC
+  - Socket.IO
+  - NestJS / Node.js
+  - PostgreSQL
+
+cv: true
 ---
 
+import CvOnlyDetails from "@components/CvOnlyDetails.astro";
+import ProjectDetails from "@components/ProjectDetails.astro";
+
+<ProjectDetails>
 Socium application is the easiest way to chat with people anonymously.
 
 You are always Anonymous, the people you chat with will never see you unless you want to!
@@ -20,3 +32,16 @@ Unlike most chat apps, your appearance is unimportant here, no one needs to like
 - Make a voice call
 - End or block a chat you don't like at any time
 - No logs are kept on users or servers when your chat is over
+</ProjectDetails>
+<CvOnlyDetails>
+- Socium is an anonymous chat app with features like Spotify sharing and social circle management. It supports voice calls and lets users manage their chats.
+- React Native / Expo is used to create a mobile application with cross-platform compatibility in mind.
+- Supabase is used to store and sync data between users.
+- Firebase FCM is used for handling notifications.
+- Redux is used for state management
+- GraphQL is used to communicate with backend.
+- Lottie is used for rendering After Effects animations in real time.
+- Recyclerlistview is used for creating clutter-free and high performance UI when dealing with big lists(eg. messages)
+- Used Socket.IO for bidirectional and low-latency communication for mathcing peers.
+- WebRTC is used for managing audio and video calls between peers.
+</CvOnlyDetails>
