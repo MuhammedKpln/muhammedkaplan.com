@@ -1,0 +1,53 @@
+---
+import "@assets/css/main.css";
+import ProfileImage from "@assets/profile.jpg";
+import { Image } from "astro:assets";
+import { fade } from "astro:transitions";
+import Footer from "src/components/Footer.astro";
+import CvHeader from "../components/Header/CvHeader";
+---
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Muhammed Kaplan - Webbdagbok</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="sitemap" href="/sitemap.xml" />
+  </head>
+  <body>
+    <div class="flex flex-col min-h-full" transition:animate={fade()}>
+      <div class="container mx-auto">
+        {/* @ts-ignore */}
+        <CvHeader client:idle>
+          <Image
+            slot="profile-image"
+            class="w-16 h-16 lg:h-24 lg:w-24 bg-white/10 rounded-full border border-white/20"
+            src={ProfileImage}
+            alt="qwe"
+          />
+        </CvHeader>
+
+        <div class="flex mt-10">
+          <div>
+            <slot name="body" />
+          </div>
+          <div class="w-1/2">
+            <slot name="sidebar" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-black text-white hidden-print">
+      <Footer />
+    </div>
+  </body>
+</html>

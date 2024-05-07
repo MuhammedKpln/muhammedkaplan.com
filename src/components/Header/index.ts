@@ -16,4 +16,8 @@ export const NavBarItems: INavbarItem[] = [
     name: "Résumé",
     href: "/resume",
   },
+  {
+    name: "CV",
+    href: "/cv",
+  },
 ];

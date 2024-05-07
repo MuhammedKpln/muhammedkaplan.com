@@ -1,0 +1,112 @@
+---
+import { getCollection } from "astro:content";
+import CvLayout from "src/layouts/CvLayout.astro";
+
+const projects = await getCollection("projects");
+const sidebarProjects = projects.filter((p) => p.data.sidebar);
+
+const skills = [
+  {
+    title: "Programming Languages",
+    desc: "JavaScript/TypeScript, HTML, CSS, Sass, PHP, Python, Dart",
+  },
+  {
+    title: "Libraries & Frameworks",
+    desc: " React, Next.js, Nest.js, Gatsby, React Native, Flutter, Django, Tailwind",
+  },
+  {
+    title: "Tools",
+    desc: "Git, GitHub, Netlify, Vercel, WordPress, Docker, Webpack, Figma",
+  },
+];
+---
+
+<style scoped>
+  #section #section-title {
+    color: rgb(59 130 246);
+    font-size: 1.25rem /* 20px */;
+    line-height: 1.75rem /* 28px */;
+    font-weight: 600;
+    margin-bottom: 1.25rem /* 20px */;
+  }
+</style>
+
+<CvLayout>
+  <Fragment slot="sidebar">
+    <div id="section">
+      <h4 id="section-title">Skills</h4>
+
+      <ul>
+        {
+          skills.map((skill) => (
+            <li class="mb-5">
+              <h6>{skill.title}</h6>
+
+              <span class="text-gray-500 text-sm">{skill.desc}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div id="section">
+      <h4 id="section-title">Projects</h4>
+
+      <ul id="projects">
+        {
+          sidebarProjects.map((project) => (
+            <li class="mb-5">
+              <h6>{project.data.name}</h6>
+
+              <span class="text-gray-500 text-sm">
+                {project.data.description}
+              </span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </Fragment>
+
+  <Fragment slot="body">
+    <div id="section">
+      <h4 id="section-title">Relevant experiences</h4>
+
+      <div id="projects">
+        {
+          projects.map(async (project) => {
+            const { Content } = await project.render();
+
+            return (
+              <div id="pr" class="mb-10">
+                <div class="flex items-center mb-2 ">
+                  <div id="title" class="font-semibold text-xl ">
+                    <a
+                      href="${project.titleHref}"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {project.data.name}
+                    </a>
+                  </div>
+                  <ul
+                    id="tech-stack"
+                    class="ml-2 flex gap-5 text-sm text-gray-500 list-disc before:content-['/'] "
+                  >
+                    {project.data?.tags?.map((tag) => {
+                      return <li>{tag}</li>;
+                    })}
+                  </ul>
+                </div>
+
+                <p id="description" class="text-gray-500 text-sm">
+                  <Content />
+                </p>
+              </div>
+            );
+          })
+        }
+      </div>
+    </div>
+  </Fragment>
+</CvLayout>
