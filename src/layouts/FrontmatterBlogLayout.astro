@@ -1,0 +1,14 @@
+---
+import Prose from "@components/Prose.astro";
+import Blog from "./Blog.layout.astro";
+const { frontmatter } = Astro.props;
+---
+
+<Blog>
+  <Fragment slot="title"> {frontmatter.title}</Fragment>
+  <Fragment slot="content">
+    <Prose>
+      <slot />
+    </Prose>
+  </Fragment>
+</Blog>

@@ -1,0 +1,16 @@
+---
+import { getCollection } from "astro:content";
+
+const _projects = await getCollection("projects");
+
+const projects = _projects.filter((p) => p.data.featured && p.data.cv);
+---
+
+{
+  projects.map((p) => (
+    <details>
+      <summary>{p.data.name}</summary>
+      <p>{p.data.description}</p>
+    </details>
+  ))
+}
