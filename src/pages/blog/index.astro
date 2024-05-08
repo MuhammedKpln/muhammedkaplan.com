@@ -33,7 +33,7 @@ const groupedPostsKeys = Object.keys(groupedPosts);
           const splittedKey = key.split("-");
           date.setFullYear(parseInt(splittedKey[1]));
           date.setMonth(parseInt(splittedKey[0]));
-          const formattedDate = new Intl.DateTimeFormat("sv-SE", {
+          const formattedDate = new Intl.DateTimeFormat("en-US", {
             month: "long",
             year: "numeric",
           }).format(date);

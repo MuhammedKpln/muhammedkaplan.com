@@ -12,12 +12,11 @@ if (!collection) {
   return Astro.redirect("/blog");
 }
 
-const formattedDate = new Intl.DateTimeFormat("sv-SE", {
-            month: "long",
-            year: "numeric",
-            day: "2-digit"
+const formattedDate = new Intl.DateTimeFormat("en-US", {
+  month: "long",
+  year: "numeric",
+  day: "2-digit",
 }).format(collection.data.pubDate);
-
 
 const { Content } = await collection?.render();
 ---
