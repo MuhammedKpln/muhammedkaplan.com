@@ -2,7 +2,7 @@
 import "@assets/css/main.css";
 import ProfileImage from "@assets/profile.jpg";
 import { Image } from "astro:assets";
-import { ViewTransitions, fade } from 'astro:transitions';
+import { ViewTransitions, fade } from "astro:transitions";
 import Footer from "src/components/Footer.astro";
 import MobileHeader from "src/components/Header/MobileHeader";
 import Header from "../components/Header/Header";
@@ -18,15 +18,25 @@ import Header from "../components/Header/Header";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Muhammed Kaplan - Webbdagbok</title>
-    <meta name="theme-color" content="#000000">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-    <ViewTransitions  />
+    <meta name="theme-color" content="#000000" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <ViewTransitions />
     <link rel="sitemap" href="/sitemap.xml" />
-    </head>
+    <script
+      defer
+      data-domain="muhammedkaplan.com"
+      src="https://analytics.hasanisabbah.duckdns.org/js/script.js"></script>
+  </head>
   <body>
-    <div class="flex flex-col min-h-full bg-black text-white" transition:animate={fade()} >
+    <div
+      class="flex flex-col min-h-full bg-black text-white"
+      transition:animate={fade()}
+    >
       {/* @ts-ignore */}
       <Header client:idle>
         <Image
@@ -42,11 +52,9 @@ import Header from "../components/Header/Header";
       </div>
 
       <slot name="body-no-container" />
-
     </div>
 
-
-    <div class=" bg-black text-white">
+    <div class="bg-black text-white">
       <Footer />
     </div>
   </body>
