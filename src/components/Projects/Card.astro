@@ -33,12 +33,19 @@ const imagePath = `/src/assets/images/${project.data?.image}`;
 ---
 
 <div class="bg-blue-300/5 p-5 border-blue-300/30 shadow-2xl rounded-lg">
-  <div id="badges" class="flex gap-5 mb-5">
+  <div id="badges" class="flex gap-5 mb-5 flex-wrap">
     {
       project.data.tags &&
         project.data.tags?.map((tag) => (
           <div
-          class:list={["p-1.5", "px-5", "rounded-full", "text-center", "text-xs", `bg-${getRandomColor()}`]}
+            class:list={[
+              "p-1.5",
+              "px-5",
+              "rounded-full",
+              "text-center",
+              "text-xs",
+              `bg-${getRandomColor()}`,
+            ]}
           >
             {tag}
           </div>
