@@ -10,4 +10,7 @@ export default defineConfig({
   site: "https://muhammedkaplan.com",
   output: "server",
   adapter: vercel(),
+  redirects: {
+    "/kinnema": "https://kinnema.vercel.app",
+  },
 });
