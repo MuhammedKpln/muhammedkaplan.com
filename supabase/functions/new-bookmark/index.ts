@@ -1,6 +1,7 @@
 import { Slugify } from "@officialrajdeepsingh/slugify";
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { BOOKMARKS_COLLECTION, DATABASE_ID, db } from "../_shared/appwrite.ts";
+import { errorResponse, successResponse } from "../_shared/http.ts";
 
 interface IRequest {
   title: string;
@@ -10,12 +11,8 @@ interface IRequest {
 Deno.serve(async (req) => {
   const request = (await req.json()) as IRequest;
 
-  console.log(request);
-
   if (!request.title || !request.description) {
-    return new Response(null, {
-      status: 400,
-    });
+    return errorResponse("Title or description is required");
   }
 
   const documentID = Slugify(request.title);
@@ -27,19 +24,9 @@ Deno.serve(async (req) => {
       created_at: new Date().toISOString(),
     })
     .then((r) => {
-      return new Response(JSON.stringify(r), {
-        headers: { "Content-Type": "application/json" },
-      });
+      return successResponse(r);
     })
     .catch((err) => {
-      return new Response(
-        JSON.stringify({
-          error: err.message,
-        }),
-        {
-          headers: { "Content-Type": "application/json" },
-          status: 400,
-        }
-      );
+      return errorResponse(err.message);
     });
 });
