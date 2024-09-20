@@ -1,0 +1,7 @@
+{
+    "imports": {
+        "@officialrajdeepsingh/slugify": "jsr:@officialrajdeepsingh/slugify@^0.1.1",
+        "@appwrite/sdk": "https://deno.land/x/appwrite@12.1.0/mod.ts",
+        "@appwrite/client": "./_shared/appwrite.ts"
+    }
+}
