@@ -9,6 +9,10 @@ export const NavBarItems: INavbarItem[] = [
     href: "/blog",
   },
   {
+    name: "Bookmarks",
+    href: "/bookmarks",
+  },
+  {
     name: "Projects",
     href: "/projects",
   },
