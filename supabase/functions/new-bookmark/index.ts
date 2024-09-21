@@ -6,12 +6,13 @@ import { errorResponse, successResponse } from "../_shared/http.ts";
 interface IRequest {
   title: string;
   description: string;
+  href: string;
 }
 
 Deno.serve(async (req) => {
   const request = (await req.json()) as IRequest;
 
-  if (!request.title || !request.description) {
+  if (!request.title || !request.description || !request.href) {
     return errorResponse("Title or description is required");
   }
 
@@ -21,6 +22,7 @@ Deno.serve(async (req) => {
     .createDocument(DATABASE_ID, BOOKMARKS_COLLECTION, documentID, {
       description: request.description,
       title: request.title,
+      href: request.href,
       created_at: new Date().toISOString(),
     })
     .then((r) => {
