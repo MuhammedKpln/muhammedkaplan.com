@@ -4,11 +4,14 @@ import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { successResponse } from "../_shared/http.ts";
 
 Deno.serve(async (req) => {
-  const { limit } = await req.json();
   const queries: string[] = [];
 
-  if (limit) {
-    queries.push(Query.limit(parseInt(limit)));
+  if (req.bodyUsed) {
+    const { limit } = await req.json();
+
+    if (limit) {
+      queries.push(Query.limit(parseInt(limit)));
+    }
   }
 
   const bookmarks = await db.listDocuments(
