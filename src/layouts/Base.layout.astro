@@ -3,9 +3,10 @@ import "@assets/css/main.css";
 import ProfileImage from "@assets/profile.jpg";
 import { Image } from "astro:assets";
 import { ViewTransitions, fade } from "astro:transitions";
-import Footer from "src/components/Footer.astro";
+import Footer from "@components/Footer";
 import MobileHeader from "src/components/Header/MobileHeader";
 import Header from "../components/Header/Header";
+import { Toaster } from "react-hot-toast";
 ---
 
 <script is:inline>
@@ -33,6 +34,7 @@ import Header from "../components/Header/Header";
       class="flex flex-col min-h-full bg-black text-white"
       transition:animate={fade()}
     >
+      <Toaster client:idle />
       {/* @ts-ignore */}
       <Header client:idle>
         <Image
@@ -51,7 +53,7 @@ import Header from "../components/Header/Header";
     </div>
 
     <div class="bg-black text-white">
-      <Footer />
+      <Footer client:load />
     </div>
   </body>
 </html>
