@@ -1,0 +1,23 @@
+---
+title: Hyprland QT Styling
+pubDate: 2025-07-21
+---
+Recently, I installed Hyprland along with some KDE applications. However, the theming in KDE/Qt applications wasn’t quite working. I found some solutions online suggesting you install a tool like qt6ct to change the theme but in reality, you don't necessarily need it as long as the Breeze theme is installed on your system. (If you don't have it yet, see below.)
+
+What you actually need is to set the appropriate Qt environment variable to use the Breeze theme, instead of relying on qt6ct. In my experience, it's the most stable option.
+
+Install the Breeze theme:
+
+```bash
+pacman -S breeze
+```
+
+Next, set the following environment variables in your ~/.config/hypr/hyprland.conf file. These will configure Qt 6 applications to use the Breeze theme (in this case, Breeze-Dark):
+
+```conf
+env = XDG_SESSION_DESKTOP,KDE
+env = XDG_CURRENT_DESKTOP,KDE
+env = QT_STYLE_OVERRIDE,Breeze-Dark
+Make sure you’ve also set the following elsewhere in your config (which you likely already have):
+```
+Now, restart Hyprland, and your KDE/Qt apps should properly follow the Breeze theming.
