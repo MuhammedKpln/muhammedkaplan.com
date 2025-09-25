@@ -1,20 +1,22 @@
 ---
+import { getCollection } from "astro:content";
 import Base from "src/layouts/Base.layout.astro";
-import { fetchBookmarks } from "src/services/bookmarks.service";
-import type { IBookmark } from "src/types/api";
 
-const bookmarks = await fetchBookmarks();
-const bk: IBookmark[] = [...bookmarks.documents];
+let bookmarks = await getCollection("bookmarks");
 
-const groupedBookmarks = bookmarks.documents.reduce((bookmarks, bookmark) => {
-  const date = new Date(bookmark.created_at);
+const groupedBookmarks = bookmarks.reduce((bookmarks, bookmark) => {
+  const date = new Date(bookmark.data.pubDate);
   const key = `${date.getMonth()}-${date.getFullYear()}`;
 
   if (!bookmarks[key]) {
     bookmarks[key] = [];
   }
 
-  bookmarks[key].push(bookmark);
+  bookmarks[key].push({
+    title: bookmark.data.title,
+    body: bookmark,
+    href: bookmark.data.href,
+  });
 
   return bookmarks;
 }, {});
@@ -47,13 +49,14 @@ const groupedBookmarksKeys = Object.keys(groupedBookmarks);
                   {groupedBookmarks[key].map((bookmark) => {
                     return (
                       <a
-                        href={`${bookmark.href}`}
+                        href={`${bookmark.body.data.href}?utm_source=muhammedkaplan.com&utm_medium=referral`}
+                        target="_blank"
                         class="text-[13px] lg:text-lg grid py-1.5 px-4 transition-colors group hover:text-blue-300 hover:bg-blue-300/10 rounded-md"
                       >
-                        {bookmark.title}
+                        {bookmark.body.data.title}
 
                         <p class="text-xs mt-1 lg:mt-0 lg:text-base text-gray-500">
-                          {bookmark.description}
+                          {bookmark.body.body}
                         </p>
                       </a>
                     );
